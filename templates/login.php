@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -16,29 +17,8 @@
     </head>
     <body>
         <div class="container" id="container">
-            <div class="form-container sign-up-container">
-                <form action="#">
-                    <h1>Create Account</h1>
-                    <div class="social-container">
-                        <a href="#" class="social">
-                            <ion-icon name="logo-facebook"></ion-icon>
-                        </a>
-                        <a href="#" class="social">
-                            <ion-icon name="logo-googleplus"></ion-icon>
-                        </a>
-                        <a href="#" class="social">
-                            <ion-icon name="logo-linkedin"></ion-icon>
-                        </a>
-                    </div>
-                    <span>or use your email for registration</span>
-                    <input type="text" placeholder="Name">
-                    <input type="email" placeholder="Email">
-                    <input type="password" placeholder="Password">
-                    <button>Sign Up</button>
-                </form>
-            </div>
             <div class="form-container sign-in-container">
-                <form action="#">
+                <form action="authenticate.php" method="post">
                     <h1>Sign In</h1>
                     <div class="social-container">
                         <a href="#" class="social">
@@ -52,11 +32,25 @@
                         </a>
                     </div>
                     <span>or use your account</span>
-                    <input type="email" placeholder="Email">
-                    <input type="password" placeholder="Password">
-                    <button>Sign In</button>
+                    <input type="email" name="email" placeholder="Email" id="email">
+                    <input type="password" name="password" placeholder="Password" id="password">
+                    <button type="submit" value="Login">Sign In</button>
                 </form>
             </div>
+            <?php if(isset($_SESSION['error'])) { echo "dasdsadsa"; ?>
+                <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                    <div class="toast-header">
+                        <img src="..." class="rounded mr-2" alt="...">
+                        <strong class="mr-auto">Login Error</strong>
+                        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="toast-body">
+                        <?=$_SESSION['error']; ?>
+                    </div>
+                    </div>
+            <?php session_destroy($_SESSION['error']); } ?>
             <div class="overlay-container">
                 <div class="overlay">
                     <div class="overlay-panel overlay-left">

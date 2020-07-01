@@ -1,47 +1,27 @@
+<?php
+// We need to use sessions, so you should always start sessions using the below code.
+session_start();
+// If the user is not logged in redirect to the login page...
+if (!isset($_SESSION['loggedin'])) {
+	header('Location: index.html');
+	exit;
+}
+?>
 <!DOCTYPE html>
 <html>
     <head>
-        <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-        <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <link rel="shortcut icon" type="image/png" href="assets/img/booksmart-favicon1.png"/>
         <link type="text/css" href="assets/css/style.css" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Shanti&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
-
         <title>Booksmart</title>
     </head>
     <body>
         <header class="masthead">
-            <nav class="navbar navbar-expand-lg navbar-light navbar-fixed-top" style="background: transparent;">
-                <a class="navbar-brand" href="#">
-                    <img src="assets/img/booksmart-img.png" class="logo-anim2" alt="logo-image">
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
-                </button>
-              
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                  <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active">
-                      <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#features">Features</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#trending">Trending</a>
-                      </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#generic_price_table">Subscriptions</a>
-                    </li>
-                  </ul>
-                </div>
-            </nav>
-                <hr style="margin-top: 0px; margin-bottom: 0px;">
+            <?php navi(); ?>
             <div class="container h-50">
               <div class="row h-100 align-items-center">
                     <div class="col-xl-7 col-md-7">
